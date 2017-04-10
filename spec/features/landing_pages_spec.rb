@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "LandingPages", type: :feature do
-  context "going to the website" do
+  context "accessing the website" do
     Steps "to access the website as a new user" do
       Given "I am on the landing page" do
         visit "/"
@@ -21,7 +21,7 @@ RSpec.feature "LandingPages", type: :feature do
         click_on "Sign up"
       end
       Then "I am taken to the Welcome page" do
-        expect(page).to have_content "Welcome"
+        expect(page).to have_content "The countdown begins!"
         click_on "Logout"
       end
       Given "I created an account, I can log back in" do
@@ -32,7 +32,7 @@ RSpec.feature "LandingPages", type: :feature do
         click_on "Log in"
       end
       And "I am back to the welcome page" do
-        expect(page).to have_content("Welcome")
+        expect(page).to have_content "The countdown begins!"
       end
     end # end of steps
   end #end of context
