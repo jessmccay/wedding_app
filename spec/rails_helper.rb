@@ -6,9 +6,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 
+# Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'      # add this line
 require 'rspec/example_steps' # add this line
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'support/database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -36,8 +37,36 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+  # Clean up and initialize database before
+  #running test examples
+  config.before(:suite) do
+    #Truncate database to clean up garbage from
+    #interrupted or badly written examples
+    DatabaseCleaner.clean_with(:truncation)
 
+    load "#{Rails.root}/db/seeds.rb"
+
+  end
+
+
+    config.around(:each) do |example|
+
+      DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+
+
+      DatabaseCleaner.cleaning do
+
+
+        example.run
+      end
+
+      load "#{Rails.root}/db/seeds.rb" if example.metadata[:js]
+
+
+      # Clear sessions data
+      Capybara.reset_sessions!
+    end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -51,10 +80,10 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
-  config.infer_spec_type_from_file_location!
+  # config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
-  config.filter_rails_from_backtrace!
+  # config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end

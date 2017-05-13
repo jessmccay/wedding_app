@@ -8,7 +8,7 @@
 
 #This is our admin user, user with id 1. Always created when the app is initialized.
 
-admin = User.new(email: "mpsdevs@gmail.com", username: "mps", password: "password", password_confirmation: "password")
+admin = User.create(email: "zoekravitz@gmail.com", username: "zoe", password: "lolawolf")
 
 Category.create(name: "Food", color: "Red", descripton: "Use this category to help you select the right food.", user_id: admin.id)
 Category.create(name: "Drinks", color: "Green", descripton: "Use this category to help you select the right drinks.", user_id: admin.id)

@@ -26,10 +26,12 @@
         end
         Then "I can go see my categories" do
           click_on "Tasks"
-          save_and_open_page
         end
         And "I can see 10 pre-existing categories" do
           expect(page).to have_content "Food"
+          expect(page).to have_content "Drinks"
+          expect(page).to have_content "Cake"
+          expect(page).to have_content "Venue"
 
         end
       end
