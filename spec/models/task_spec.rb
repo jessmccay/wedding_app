@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'test_helper'
+
 
 RSpec.describe Task, type: :model do
   it "can be saved to the db" do

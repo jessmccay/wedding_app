@@ -10,7 +10,6 @@ RSpec.feature "Tasks", type: :feature do
         click_on "Sign up"
       end
       Then "I can fill out the sign up form" do
-        expect(page).to have_content "Let's get started!"
         fill_in "Email", with: "mpsdevs@gmail.com"
         fill_in "Username", with: "mps"
         fill_in "Password", with: "password;)"
