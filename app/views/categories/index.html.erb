@@ -12,16 +12,29 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.color %></td>
+  <tbody><button class="accordion">Section 1</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+  <% @categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+  </tr>
+</div>
+
+<button class="accordion">Section 2</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div>
+        <!-- <td><%= category.color %></td>
         <td><%= category.descripton %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
     <% end %>
   </tbody>
 </table>
