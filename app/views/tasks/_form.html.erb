@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :category_id %>
-    <%= f.text_field :category_id %>
+    <%= select(:category, :category_id, @categories_for_select) %>
   </div>
 
   <div class="field">
