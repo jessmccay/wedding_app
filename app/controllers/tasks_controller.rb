@@ -13,20 +13,26 @@ class TasksController < ApplicationController
   def show
   end
 
-  # GET /tasks/new
   def new
     @task = Task.new
+    @categories_for_select = Category.all.map do |category|
+      [category.name, category.id]
+    end
   end
 
-  # GET /tasks/1/edit
   def edit
+    @categories_for_select = Category.all.map do |category|
+      [category.name, category.id]
+    end
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
+    @categories_for_select = Category.all.map do |category|
+      [category.name, category.id]
+    end
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
