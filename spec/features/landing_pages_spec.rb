@@ -35,4 +35,23 @@ RSpec.feature "LandingPages", type: :feature do
       end
     end # end of steps
   end #end of context
+
+  context "viewing my upcoming tasks on the homepage" do
+    Steps "to seeing a homepage of tasks divided by category" do
+      Given "I am logged in" do
+        visit "/"
+        fill_in "Email", with: "zoekravitz@gmail.com"
+        fill_in "Password", with: "lolawolf"
+        click_on "Log in"
+      end
+      Then "I can see a list of upcoming tasks based on category" do
+        expect(page).to have_content("Food")
+        expect(page).to have_content("2017-10-25 00:00:00 UTC: Find a caterer")
+        expect(page).to have_content("Drinks")
+        expect(page).to have_content("2018-05-25 00:00:00 UTC: Find a bartender")
+        expect(page).to have_content("2018-08-25 00:00:00 UTC: Decide what alcohol to provide")
+      end
+    end #end of steps
+  end #end of context
+
 end #end of feature
