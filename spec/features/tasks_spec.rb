@@ -1,4 +1,5 @@
 require 'rails_helper'
+load "#{Rails.root}/db/seeds.rb"
 
 RSpec.feature "Tasks", type: :feature do
   context "creating new tasks" do
@@ -19,22 +20,13 @@ RSpec.feature "Tasks", type: :feature do
       And "I am back to the welcome page" do
         expect(page).to have_content "The countdown begins!"
       end
-      Then "I can create a new category" do
-        visit '/categories'
-        click_on "New Category"
-        fill_in "Name", with: "Flowers"
-        fill_in "Color", with: "Pink"
-        #Need to change spelling
-        fill_in "Descripton", with: "Get pretty ones"
-        click_on "Create Category"
-        expect(page).to have_content "Category was successfully created."
-      end
+
       Then "I can see the create task button on my home page" do
         visit "/"
-        click_button "Create a New Task"
+        click_button "Create Task"
       end
       And "I can fill out a form to create a new task" do
-        fill_in "Category", with: "#{Category.first.id}"
+        select('Decor', :from => 'task[category_id]')
         fill_in "Name", with: "Florist"
         click_on "Create Task"
       end

@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category_id %>
-    <%= select(:category, :category_id, @categories_for_select) %>
+    <%= f.label :category %> <%= select(:task, :category_id, @categories_for_select) %>
   </div>
 
   <div class="field">
