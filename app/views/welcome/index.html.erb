@@ -1,3 +1,15 @@
 <h1>The countdown begins!</h1>
 <br>
 <%= button_to 'Create Task', new_task_path, :method => 'get' %>
+<br>
+<h1>Upcoming tasks:</h1>
+
+<% @categories.each do |category| %>
+  <% if category.tasks.count != 0 %>
+    <hr>
+    <h2><%= category.name %></h2>
+    <% category.tasks.each do |task| %>
+      <h4><%= task.start_time %>: <%= task.name %></h4></a>
+    <% end %>
+  <% end %>
+<% end %>
