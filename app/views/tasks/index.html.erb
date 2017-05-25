@@ -7,7 +7,7 @@
     <tr>
       <th>Category</th>
       <th>Name</th>
-      <th>Start time</th>
+      <th>Due date</th>
       <th>Description</th>
       <th>Task budget</th>
       <th colspan="3"></th>
@@ -17,14 +17,28 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.category %></td>
-        <td><%= task.name %></td>
-        <td><%= task.start_time %></td>
-        <td><%= task.description %></td>
-        <td><%= task.task_budget %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="row">
+          <div class="col-lg-2">
+            <td><%= task.category.name %></td>
+          </div>
+          <div class="col-lg-2">
+            <td><%= task.name %></td>
+          </div>
+          <div class="col-lg-2">
+            <td><%= task.start_time %></td>
+          </div>
+          <div class="col-lg-2">
+            <td><%= task.description %></td>
+          </div>
+          <div class="col-lg-2">
+            <td><%= task.task_budget %></td>
+          </div>
+          <div class="col-lg-3">
+            <td><%= link_to 'Show', task %>
+            <%= link_to 'Edit', edit_task_path(task) %>
+            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        </div>
       </tr>
     <% end %>
   </tbody>
