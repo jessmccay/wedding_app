@@ -1,30 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Task Categories</h1>
+<% for i in 0...@categories.length do %>
+<ul class="nav nav-stacked" id= "<%= i %>" >
+    <li class="panel">
+              <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
+              <ul id="link<%= i %>" class="collapse panel-collapse in">
+                    <li><%= @categories[i][:description] %></li>
+              </ul>
+            </li>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Color</th>
-      <th>Descripton</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+</ul>
+<% end %>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.color %></td>
-        <td><%= category.descripton %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
