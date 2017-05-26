@@ -35,6 +35,13 @@ RSpec.feature "Tasks", type: :feature do
         expect(page).to have_content "Florist"
       end
 
+      And "I can also see 4 buttons" do
+        expect(page).to have_content "Edit"
+        expect(page).to have_content "Destroy"
+        expect(page).to have_content "Mark as complete"
+        expect(page).to have_content "Back"
+      end
+
     end # end of steps
   end #end of context
 end
