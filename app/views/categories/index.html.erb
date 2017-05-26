@@ -1,35 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Task Categories</h1>
-<ul class="nav nav-stacked" id="accordion1">
-  <% @categories.each do |category| %>
-            <li class="panel">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#firstLink"><%= category.name %></a>
-              <ul id="firstLink" class="collapse panel-collapse in">
-                    <li><%= category.description %></li>
-
-
-                </ul>
+<% for i in 0...@categories.length do %>
+<ul class="nav nav-stacked" id= "<%= i %>" >
+    <li class="panel">
+              <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
+              <ul id="link<%= i %>" class="collapse panel-collapse in">
+                    <li><%= @categories[i][:description] %></li>
+              </ul>
             </li>
-            <li class="panel">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#firstLink"><%= category.name %></a>
-              <ul id="firstLink" class="collapse panel-collapse in">
-                    <li><%= category.description %></li>
 
-
-                </ul>
-            </li>
-            <% end %>
-
-  <!-- <tbody> -->
-
-
-  <button class="accordion"></button>
-  <div class="panel">
-
-    <%= link_to 'Show', @category %>
-  </div>
-
+</ul>
+<% end %>
 
 
 <br>
