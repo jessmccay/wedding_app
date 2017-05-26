@@ -6,7 +6,11 @@
     <li class="panel">
               <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
               <ul id="link<%= i %>" class="collapse panel-collapse in">
-                    <li><%= @categories[i][:description] %></li>
+                <!-- Hi jess- i changed the contents of the accoridon from category.description to the name of the tasks in that category -->
+                <% @categories[i].tasks.each do |task| %>
+                    <li><%= task.name %></li>
+                    <li>Link to task</li>
+                  <% end %>
               </ul>
             </li>
 
