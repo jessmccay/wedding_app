@@ -27,12 +27,15 @@
         Then "I can go see my categories" do
           click_on "Tasks"
         end
-        And "I can see 10 pre-existing categories" do
+        And "I can see an accordion menu with pre-existing categories" do
           expect(page).to have_content "Food"
           expect(page).to have_content "Drinks"
           expect(page).to have_content "Cake"
           expect(page).to have_content "Venue"
-
+        end
+        Then "I can click on a category to see the given tasks" do
+          click_on "Food"
+          expect(page).to have_content "Find a caterer"
         end
       end
     end
