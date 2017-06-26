@@ -8,7 +8,7 @@
               <ul id="link<%= i %>" class="collapse panel-collapse">
                 <!-- Hi jess- i changed the contents of the accoridon from category.description to the name of the tasks in that category -->
                 <% @categories[i].tasks.each do |task| %>
-                    <li><%= task.name %></li>
+                    <li><a href="tasks/<%= task.id%>"><%= task.name %></a></li>
                     <li>Link to task</li>
                   <% end %>
               </ul>
