@@ -1,19 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Task Categories</h1>
+
+
 <% for i in 0...@categories.length do %>
 <ul class="nav nav-stacked" id= "<%= i %>" >
     <li class="panel">
-              <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
-              <ul id="link<%= i %>" class="collapse panel-collapse">
-                <!-- Hi jess- i changed the contents of the accoridon from category.description to the name of the tasks in that category -->
-                <% @categories[i].tasks.each do |task| %>
-                    <li><a href="tasks/<%= task.id%>"><%= task.name %></a></li>
-                    <li>Link to task</li>
-                  <% end %>
-              </ul>
-            </li>
-
+        <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
+        <ul id="link<%= i %>" class="collapse panel-collapse">
+          <% @categories[i].tasks.each do |task| %>
+              <li><a href="tasks/<%= task.id%>"><%= task.name %></a></li>
+            <% end %>
+        </ul>
+      </li>
 </ul>
 <% end %>
 
