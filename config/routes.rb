@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  resources :tasks
-  resources :categories
-  devise_for :users
-  get 'welcome/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :tasks
+  get "tasks/:id/complete_task" => "tasks#complete_task"
+
+  resources :categories
+
+  devise_for :users
+
+  get 'welcome/index'
   root 'welcome#index'
 
 end
