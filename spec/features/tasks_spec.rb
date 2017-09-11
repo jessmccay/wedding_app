@@ -41,7 +41,12 @@ RSpec.feature "Tasks", type: :feature do
         expect(page).to have_content "Mark as complete"
         expect(page).to have_content "Back"
       end
-
+      And "I can add tasks to an existing category" do
+        click_on "Tasks"
+        click_on "Food"
+        first('.panel').click_link('New Task')
+        expect(page).to have_content "Category"
+      end
     end # end of steps
   end #end of context
 end
