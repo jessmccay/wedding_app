@@ -71,11 +71,12 @@ class TasksController < ApplicationController
 
     def complete_task
       @task = Task.find(params[:id])
+
       if @task.complete == false
         @task.complete = true
-        1/0
-        #this change won't persist???????
+        @task.save
       end
+
       redirect_to @task
     end
 

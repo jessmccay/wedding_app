@@ -30,9 +30,4 @@ RSpec.describe Task, type: :model do
     expect(task.complete).to be false
   end
 
-  it "can be completed" do
-    task.complete_task
-    expect(task.complete).to be true
-  end
-
 end
