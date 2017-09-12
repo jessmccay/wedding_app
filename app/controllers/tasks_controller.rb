@@ -26,6 +26,7 @@ class TasksController < ApplicationController
     end
   end
 
+
   # POST /tasks
   # POST /tasks.json
   def create
@@ -68,6 +69,17 @@ class TasksController < ApplicationController
     end
   end
 
+    def complete_task
+      @task = Task.find(params[:id])
+
+      if @task.complete == false
+        @task.complete = true
+        @task.save
+      end
+
+      redirect_to @task
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -76,6 +88,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:category_id, :name, :start_time, :description, :task_budget)
+      params.require(:task).permit(:category_id, :name, :start_time, :description, :task_budget, :complete)
     end
+
 end

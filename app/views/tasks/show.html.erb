@@ -25,4 +25,17 @@
   <%= @task.task_budget %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |   <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Mark as complete' %> | <%= link_to 'Back', tasks_path %>
+<p>
+  <strong>Is Complete:</strong>
+  <%= @task.complete.to_s %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |   <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' } %> |  <%= link_to 'Back', tasks_path %>
+
+<% if @task.complete == false %>
+  <form action="<%= @task.id%>/complete_task" method="get">
+    <input type="submit" value="Complete Task" class='btn btn-primary'/>
+  </form>
+<% elsif @task.complete == true %>
+  <h4 style="color: gray;">Task Complete.</h4>
+<% end %>

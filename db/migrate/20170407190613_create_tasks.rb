@@ -8,6 +8,8 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.integer :task_budget
 
       t.timestamps
+
+      
     end
   end
 end

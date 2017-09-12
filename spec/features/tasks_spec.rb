@@ -38,7 +38,7 @@ RSpec.feature "Tasks", type: :feature do
       And "I can also see 4 buttons" do
         expect(page).to have_content "Edit"
         expect(page).to have_content "Destroy"
-        expect(page).to have_content "Mark as complete"
+        expect(page).to have_button "Complete Task"
         expect(page).to have_content "Back"
       end
       And "I can add tasks to an existing category" do
@@ -47,6 +47,31 @@ RSpec.feature "Tasks", type: :feature do
         first('.panel').click_link('New Task')
         expect(page).to have_content "Category"
       end
-    end # end of steps
-  end #end of context
+    end
+  end
+
+  context 'Completing a task' do
+    Steps 'to marking a task as complete' do
+      Given 'I am logged in' do
+        visit '/'
+        fill_in 'Email', with: 'zoekravitz@gmail.com'
+        fill_in 'Password', with: 'lolawolf'
+        click_on 'Log in'
+      end
+
+      Then 'I can view a task' do
+        click_on 'Tasks'
+        click_on 'Decor'
+        click_on 'Order flowers'
+      end
+
+      Then 'I can mark my task as complete' do
+        click_on 'Complete Task'
+      end
+
+      And 'my task is marked as complete' do
+        expect(page).to have_content "Task Complete."
+      end
+    end
+  end 
 end
