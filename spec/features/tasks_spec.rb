@@ -47,8 +47,8 @@ RSpec.feature "Tasks", type: :feature do
         first('.panel').click_link('New Task')
         expect(page).to have_content "Category"
       end
-    end # end of steps
-  end #end of context
+    end
+  end
 
   context 'Completing a task' do
     Steps 'to marking a task as complete' do
@@ -72,6 +72,6 @@ RSpec.feature "Tasks", type: :feature do
       And 'my task is marked as complete' do
         expect(page).to have_content "Task Complete."
       end
-    end #end steps
-  end #end context
+    end
+  end 
 end
