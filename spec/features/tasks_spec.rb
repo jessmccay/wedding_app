@@ -67,11 +67,13 @@ RSpec.feature "Tasks", type: :feature do
 
       Then 'I can mark my task as complete' do
         click_on 'Complete Task'
+        expect(page).to have_content 'Mark As Complete'
+        click_on 'Complete'
       end
 
       And 'my task is marked as complete' do
         expect(page).to have_content "Task Complete."
       end
     end
-  end 
+  end
 end
