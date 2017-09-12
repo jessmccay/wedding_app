@@ -33,7 +33,7 @@
 <%= link_to 'Edit', edit_task_path(@task) %> |   <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' } %> |  <%= link_to 'Back', tasks_path %>
 
 <% if @task.complete == false %>
-  <form action="<%= @task.id%>/complete_task" mthod="get">
+  <form action="<%= @task.id%>/complete_task" method="get">
     <input type="submit" value="Complete Task" class='btn btn-primary'/>
   </form>
 <% elsif @task.complete == true %>
