@@ -37,6 +37,7 @@
           click_on "Food"
           expect(page).to have_content "Find a caterer"
         end
+      
       end
     end
   # end
