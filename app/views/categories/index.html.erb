@@ -7,9 +7,12 @@
 <ul class="nav nav-stacked" id= "<%= i %>" >
     <li class="panel">
         <a data-toggle="collapse" data-parent="#<%= i %>" href="#link<%=i%>"><%= @categories[i][:name].to_s %></a>
-        <ul id="link<%= i %>" class="collapse panel-collapse"><%= link_to 'New Task', new_task_path %>
+        <ul id="link<%= i %>" class="collapse panel-collapse">
+
+          <%= link_to 'New Task', new_task_path %>
+          
           <% @categories[i].tasks.each do |task| %>
-              <li><a href="tasks/<%= task.id%>"><%= task.name %></a> <a style="float:right" href="#"> Mark Task as Completed</a></li>
+              <li><a href="tasks/<%= task.id%>"><%= task.name %></a></li>
             <% end %>
         </ul>
       </li>
