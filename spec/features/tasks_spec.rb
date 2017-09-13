@@ -25,6 +25,11 @@ RSpec.feature "Tasks", type: :feature do
         visit "/"
         click_button "Create Task"
       end
+      And "I can see a modal for the new tasks" do
+        visit "/"
+        click_button "Create Task"
+        expect(page).to have_content("Start time")
+      end
       And "I can fill out a form to create a new task" do
         select('Decor', :from => 'task[category_id]')
         fill_in "Name", with: "Florist"
