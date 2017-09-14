@@ -65,7 +65,7 @@ RSpec.feature "Tasks", type: :feature do
         click_on 'Order flowers'
       end
 
-      Then 'I can mark my task as complete' do
+      Then 'I can mark my task as complete on the modal form' do
         click_on 'Complete Task'
         expect(page).to have_content 'Mark As Complete'
         click_on 'Complete'
@@ -73,6 +73,18 @@ RSpec.feature "Tasks", type: :feature do
 
       And 'my task is marked as complete' do
         expect(page).to have_content "Task Complete."
+      end
+
+      Then 'I can go back to the tasks page' do
+        click_on 'Back'
+        expect(page).to have_content "Food"
+        expect(page).to have_content "Drinks"
+        expect(page).to have_content "Decor"
+      end
+
+      And "I can see my updated list of Completed Tasks" do
+        expect(page).to have_content "Completed Tasks"
+        expect(page).to have_content "Order flowers: completed on DATE"
       end
     end
   end
