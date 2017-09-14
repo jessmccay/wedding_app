@@ -19,15 +19,26 @@
 </ul>
 <% end %>
 
-
 <br>
 
 <%= link_to 'New Category', new_category_path %>
 
-<h1>Completed Tasks</h1>
-<ul>
-  <li>XYZ</li>
-  <li>XYZ</li>
-  <li>XYZ</li>
-  <li>XYZ</li>
-</ul>
+<h1 style="text-align: center;">Completed Tasks</h1>
+<br>
+<hr>
+<% @categories.each do |category| %>
+  <% category.tasks.each do |task| %>
+    <% if task.complete == true %>
+      <a href="tasks/<%= task.id %>"><div class="row">
+        <div class="col-lg-5">
+          <p style="text-align: right;"> <%= category.name %> </p>
+        </div>
+        <div class="col-lg-7">
+          <p style="text-align: left;"> <%= task.name %>: completed on DATE </p>
+        </div>
+      </div></a>
+      <hr>
+      <br>
+    <% end %>
+  <% end %>
+<% end %>
