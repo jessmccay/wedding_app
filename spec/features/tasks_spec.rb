@@ -77,11 +77,6 @@ RSpec.feature "Tasks", type: :feature do
       end
 
       And 'my task is marked as complete' do
-        expect(page).to have_content "Task Complete."
-      end
-
-      Then 'I can go back to the tasks page' do
-        click_on 'Back'
         expect(page).to have_content "Food"
         expect(page).to have_content "Drinks"
         expect(page).to have_content "Decor"

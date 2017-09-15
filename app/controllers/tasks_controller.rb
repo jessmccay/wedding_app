@@ -77,7 +77,7 @@ class TasksController < ApplicationController
         @task.save
       end
 
-      redirect_to @task
+      redirect_to categories_path
     end
 
   private
