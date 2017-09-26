@@ -40,7 +40,7 @@
             <li><%= link_to 'Home', '/welcome/index'%></li>
             <li><%= link_to 'Tasks', categories_path %></li>
             <li><%= link_to 'Calendar'%></li>
-            <li><%= link_to 'Budget'%></li>
+            <li><%= link_to 'Budget', budget_pages_path%></li>
             <% if current_user %>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
             <% end %>

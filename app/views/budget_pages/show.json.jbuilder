@@ -1,0 +1,1 @@
+json.partial! "budget_pages/budget_page", budget_page: @budget_page

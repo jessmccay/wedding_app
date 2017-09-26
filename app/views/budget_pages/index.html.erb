@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Budget Pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Budget</th>
+      <th>Amount spent</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budget_pages.each do |budget_page| %>
+      <tr>
+        <td><%= budget_page.budget %></td>
+        <td><%= budget_page.amount_spent %></td>
+        <td><%= budget_page.tasks %></td>
+        <td><%= link_to 'Show', budget_page %></td>
+        <td><%= link_to 'Edit', edit_budget_page_path(budget_page) %></td>
+        <td><%= link_to 'Destroy', budget_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Budget Page', new_budget_page_path %>
+
+<!-- arrange
+1. loop thru all categories. Name each category. goes under Category
+2. for each category, loop thru all tasks belonging to that category
+3. sum up all the budgets of the tasks of that category. that goes under Budget.
+4. sum up all the amt spents. if there is none, count it as 0. that goes under amt spent
+
+
+when u expand each category,
+1, you can see the name os each task uder that category
+2. that tasks budget
+3. that tasks amout spent
+
+act
+assert

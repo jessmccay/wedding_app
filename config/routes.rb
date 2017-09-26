@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :budget_pages
   resources :tasks
   get "tasks/:id/complete_task" => "tasks#complete_task"
 
