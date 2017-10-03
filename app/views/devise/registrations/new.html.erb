@@ -26,15 +26,17 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+
   <div class="field">
-    <%= f.label :wedding_date %><br />
-    <%= f.datetime_field :wedding_date%>
+    <%= f.label :wedding_date %> <br />
+    <%= f.date_field :wedding_date, min: Date.today %>
   </div>
+
+
   <div class="field">
     <%= f.label :wedding_location %><br />
     <%= f.text_field :wedding_location %>
-  </div>
-  <div class="field">
+  </div>  <div class="field">
     <%= f.label :wedding_budget %><br />
     <%= f.text_field :wedding_budget %>
   </div>
