@@ -41,6 +41,7 @@
             <li><%= link_to 'Tasks', categories_path %></li>
             <li><%= link_to 'Calendar'%></li>
             <li><%= link_to 'Budget'%></li>
+            <li><%= link_to "Profile", edit_user_registration_path %><li>
             <% if current_user %>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
             <% end %>

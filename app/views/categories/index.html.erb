@@ -19,10 +19,10 @@
             <ul id="link<%= i %>" class="collapse panel-collapse">
               <h5><%= link_to 'New Task', new_task_path%></h5>
               <% @categories[i].tasks.each do |task| %>
-                  <li><p><a href="tasks/<%= task.id%>"><%= task.name %></a></p></li>
-                <% end %>
-            </ul>
-          </li>
+                <li><p><a href="tasks/<%= task.id%>"><%= task.name %></a></p></li>
+              <% end %>
+          </ul>
+       </li>
     </ul>
     <% end %>
   </div>
