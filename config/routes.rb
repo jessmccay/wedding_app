@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   resources :tasks
   get "tasks/:id/complete_task" => "tasks#complete_task"
   get '/calendars', to: 'calendar#calendars', as: 'calendars'
+  get '/events/:calendar_id', to: 'calendar#events', as: 'events', calendar_id: /[^\/]+/
   resources :categories
 
   devise_for :users
 
-  get '/events/:calendar_id', to: 'calendar#events', as: 'events', calendar_id: /[^\/]+/
   get '/calendar/calendars'
 
   get 'welcome/index'

@@ -15,15 +15,37 @@ class CalendarController < ApplicationController
     redirect_to client.authorization_uri.to_s
   end
 
+  def events
+    client = Signet::OAuth2::Client.new(client_options)
+    client.update!(session[:authorization])
+
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.authorization = client
+
+    @event_list = service.list_events(params[:calendar_id])
+  end
   def calendars
+
+
    client = Signet::OAuth2::Client.new(client_options)
    client.update!(session[:authorization])
 
    service = Google::Apis::CalendarV3::CalendarService.new
    service.authorization = client
 
+
    @calendar_list = service.list_calendar_lists
- end
+ rescue Google::Apis::AuthorizationError
+  response = client.refresh!
+
+  session[:authorization] = session[:authorization].merge(response)
+
+  retry
+
+
+end
+
+
   private
 
   def client_options
